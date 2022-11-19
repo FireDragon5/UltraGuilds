@@ -1,0 +1,181 @@
+#%player% is the player's name
+#%guild% is the guild's name
+#%tag% is the guild's tag
+#%message% is the message
+#%rank% is the rank
+#%prefix% is the prefix
+#%target% is the target(player)
+
+
+
+
+#Here you can change the prefix for the plugin
+Prefix: '&8[&6&lS&f&lP&8] &7'
+
+
+#Here you can add a chat format for the chat
+ChatFormat: "[%guild%] %rank% &7%player% >> %message%"
+
+#Here you can change how many members that guild can have
+#This doesn't count the leader of the guild
+GuildMaxMembers: 10
+
+#Here you can change everything about the /guild command
+Messages:
+  GuildJoin:
+    Success: "&aYou have joined the guild &e%guild%"
+    Error: "&cYou are already in a guild!"
+#    This is the message that the guild members will see when a player joins the guild
+    Message: "&7[&aGuild Chat&7] >> &7%player% &ahas joined the guild!"
+    GuildIsFull: "&cThe guild is full!"
+    GuildNotPublic: "&cThe guild is not public!"
+    GuildDoesntExist: "&cThe guild doesn't exist!"
+
+  GuildLeave:
+      Success: "&aYou have left the guild &e%guild%"
+      Error: "&cYou are not in a guild!"
+      Leader: "&cYou are the leader of the guild!. Please promote someone else to leader first!"
+
+  GuildInvite:
+    InGuild: "&cThis player is already in a guild!"
+    InviteSent: "&aYou have invited &e%target% &ato your guild!"
+    InviteReceived: "&aYou have been invited to the guild &e%guild% &aby &e%player%&a!"
+    Error: "&cYou are not in a guild!"
+    PlayerNotOnline: "&cThis player is not online!"
+    PlayerAlreadyInvited: "&cThis player is already invited to the guild!"
+    NoPlayer: "&cYou need to specify a player!"
+    SameGuild: "&cThis player is already in your guild!"
+    GuildLeader: "The %player% is guild leader!"
+    GuildIsFull: "&cThe guild is full!"
+    Accept: "&aYou have accepted the invite to the guild &e%guild%&a!"
+    Deny: "&cYou have denied the invite to the guild &e%guild%&c!"
+
+  GuildRankUp:
+    Rankup: "&aYou have promoted &e%player% &ato &e%rank%&a!"
+    NoRankup: "You don't have enough score to rankup!"
+    MaxRank: "&cThis player is already at the max rank!"
+
+  GuildSetLeader:
+    ErrorPlayerGuild: "&cThe player is not in a guild!"
+    Error: "&cPlease chose a player!"
+    Success: "&a %target% is the new guild leader!"
+    SuccessTarget: "&aYou are the new guild leader of the guild &e%guild%&a!"
+
+
+  GuildCreate:
+    Success:
+      - "&aYou have created the guild &e%guild%"
+      - "&aYou are now the leader of the guild &e%guild%"
+    Fail: "&cYou already have a guild!"
+    Error: "&c/guild create <name> <tag>"
+
+  GuildSpawn:
+    GuildSpawnNotSet: "&7[&aGuild Chat&7] >> &7The guild spawn has not been set!"
+    GuildSpawnTeleport: "&7[&aGuild Chat&7] >> &7You have been teleported to your guild spawn!"
+    GuildSpawnSet: "&7[&aGuild Chat&7] >> &7The guild spawn has been set!"
+
+
+  GuildPromoteElder:
+    Success: "&7[&aGuild Chat&7] >> &7You have promoted &e%player% &7to &e%rank%"
+    Fail: "&7[&aGuild Chat&7] >> &7You can't promote &e%player% &7to &e%rank%"
+  NoGuildsAvailable: "&7[&aGuild Chat&7] >> &7There are no guilds available!"
+  GuildNotPublic: "&7[&aGuild Chat&7] >> &7The guild &e%guild% &7is not public!"
+  GuildList:
+    Header: "&7[&aGuild Chat&7] >> &7Guilds:"
+    Guild: "&7[&aGuild Chat&7] >> &7%guild%"
+
+  GuildMembers:
+    Header: "&7[&aGuild Chat&7] >> &7Members:"
+    Member: "&7[&aGuild Chat&7] >> &7%player%"
+
+  GuildSettings:
+#    This will show if the guild is public or not
+    VisibilityTrue: "&7[&aGuild Chat&7] >> &7The guild is now &e%visibility%&7!"
+    VisibilityFalse: "&7[&aGuild Chat&7] >> &7The guild is now &e%visibility%&7!"
+
+    Help: "&7[&aGuild Chat&7] >> &7/guild settings <setleader|promote|setspawn|disband|kick|demote|visibility|guildbanner>"
+
+    KickLeaderError: "&7[&aGuild Chat&7] >> &7You can't kick the leader of the guild!"
+    KickSuccess: "&7[&aGuild Chat&7] >> &7You have kicked &e%player% &7from the guild!"
+    KickFail: "&7[&aGuild Chat&7] >> &7You can't kick &e%player% &7from the guild!"
+    KickUsage: "&7[&aGuild Chat&7] >> &7/guild settings kick <player>"
+
+
+
+#Here you can change the guild chat message
+GuildChat:
+  Format: "&7[&aGuild Chat&7] >> &7%player% >> %message%"
+  JoinChat: "&7[&aGuild Chat&7] >> &7%player% &ahas joined the guild chat!"
+  LeaveChat: "&7[&aGuild Chat&7] >> &7%player% &ahas left the guild chat!"
+  NotInChat: "&7[&aGuild Chat&7] >> &7You are not in a guild chat!"
+
+
+
+#No permission message
+NoPermission: "&cYou do not have permission to do this!"
+
+
+#Here can you change the setting of Ranks:
+Ranks-Settings:
+  CurrentRankItem: "PAPER"
+
+#Don't change this
+RankStart: false
+
+
+GuildWar:
+  requiredPlayers: 2
+  countdown-seconds: 30
+#  requiredGuilds: 2
+  lobby-spawn:
+    world: 'world'
+    x: 164.5
+    y: 71.5
+    z: -3.5
+    yaw: 177.0
+    pitch: 0
+
+  arena-spawn:
+    0:
+      world: 'world'
+      x: 164.5
+      y: 71.5
+      z: -3.5
+      yaw: 177.0
+      pitch: 0
+    1:
+      world: 'world'
+      x: 164.5
+      y: 71.5
+      z: -3.5
+      yaw: 177.0
+      pitch: 0
+
+
+
+
+#Help command
+Help:
+  Guild:
+    - "&7[&aGuild Help&7] >> &7/guild create <name> &7- &aCreate a guild"
+    - "&7[&aGuild Help&7] >> &7/guild leave &7- &aLeave your guild"
+    - "&7[&aGuild Help&7] >> &7/guild join <name> &7- &aJoin a guild"
+    - "&7[&aGuild Help&7] >> &7/guild spawn &7- &aTeleport to your guild spawn"
+    - "&7[&aGuild Help&7] >> &7/guild setspawn &7- &aSet your guild spawn"
+    - "&7[&aGuild Help&7] >> &7/guild promote <player> <rank> &7- &aPromote a player to a rank"
+    - "&7[&aGuild Help&7] >> &7/guild demote <player> <rank> &7- &aDemote a player to a rank"
+    - "&7[&aGuild Help&7] >> &7/guild chat &7- &aJoin the guild chat"
+    - "&7[&aGuild Help&7] >> &7/guild leavechat &7- &aLeave the guild chat"
+    - "&7[&aGuild Help&7] >> &7/guild info &7- &aGet info about your guild"
+    - "&7[&aGuild Help&7] >> &7/guild info <name> &7- &aGet info about a guild"
+    - "&7[&aGuild Help&7] >> &7/guild list &7- &aGet a list of all guilds"
+    - "&7[&aGuild Help&7] >> &7/guild list <page> &7- &aGet a list of all guilds on a page"
+    - "&7[&aGuild Help&7] >> &7/guild delete &7- &aDelete your guild"
+    - "&7[&aGuild Help&7] >> &7/guild delete <name> &7- &aDelete a guild"
+    - "&7[&aGuild Help&7] >> &7/guild rename <name> &7- &aRename your guild"
+  Rank:
+    - "&7[&aGuild Help&7] >> &7/granks info &7- &aGet info about your rank"
+
+
+
+

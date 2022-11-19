@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+ <!DOCTYPE xml>
+ <project name="UltraGuilds" default="Build">
+     <property name="plugins" location="C:\Users\User\Desktop\Bit of Minecraft\Local Server\plugins"  />
+
+     <target name="Build" >
+         <jar jarfile="${plugins}/UltraGuilds.jar" basedir="./target/classes/" includes="**/*"/>
+     </target>
+ </project>
+
+

@@ -1,0 +1,26 @@
+name: UltraGuilds
+version: '1.0'
+main: me.firedragon5.ultraguilds.UltraGuilds
+api-version: 1.19
+
+depend:
+    - Vault
+
+
+commands:
+    guild:
+        description: Guild command
+        usage: /guild <create|leave|join|spawn|setspawn|promote|demote|chat|leavechat|info|list|delete|rename>
+        aliases: [g]
+    guildchat:
+        description: Guild chat command
+        usage: /guildchat
+        aliases: [gchat, guildc, cg]
+    grank:
+        description: Rank command
+        usage: /granks
+        aliases: [gr, granks]
+
+    aguild:
+        description: Admin guild command
+        aliases: [ag]

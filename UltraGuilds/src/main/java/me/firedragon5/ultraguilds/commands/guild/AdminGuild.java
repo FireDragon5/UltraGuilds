@@ -2,6 +2,7 @@ package me.firedragon5.ultraguilds.commands.guild;
 
 import me.firedragon5.ultraguilds.UltraGuilds;
 import me.firedragon5.ultraguilds.Utils;
+import me.firedragon5.ultraguilds.filemanager.GuildManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -35,12 +36,23 @@ public class AdminGuild implements CommandExecutor, TabCompleter {
 
 //			/aguild <reloadconfig|warspawn1|warspawn2|warbegin>
 
-			if (args.length == 1){
+
 				if (args[0].equalsIgnoreCase("reloadconfig")){
 					//reload config
 
 					UltraGuilds.getInstance().reloadConfig();
 					player.sendMessage(Utils.chat("&a&lReloaded config"));
+
+				}
+
+				if (args[0].equalsIgnoreCase("rename")){
+//					/aguild rename <guild> <new name>
+					if (args.length == 3){
+						GuildManager.adminGuildRename(args[1], args[2]);
+						player.sendMessage(Utils.chat("&a&lRenamed guild " + args[1] + " to " + args[2]));
+					}else {
+						player.sendMessage(Utils.chat("&c&lUsage: /aguild rename <guild> <new name>"));
+					}
 
 				}
 //				if (args[0].equalsIgnoreCase("warspawn1")){
@@ -73,7 +85,6 @@ public class AdminGuild implements CommandExecutor, TabCompleter {
 //
 //
 //				}
-			}
 
 
 		}else {
@@ -93,6 +104,14 @@ public class AdminGuild implements CommandExecutor, TabCompleter {
 //			tab.add("warspawn1");
 //			tab.add("warspawn2");
 //			tab.add("warbegin");
+			tab.add("rename");
+		}
+
+//		Show guild name
+		if (args.length == 2){
+			for (String guild : GuildManager.getGuilds()){
+				tab.add(guild);
+			}
 		}
 
 		for (int i = 0; i < tab.size(); i++) {

@@ -33,8 +33,8 @@ public class GuildMenus implements Listener {
 
 	public void GuildMenu(Player player) {
 
-//		File guildFile = new File("plugins/UltraGuilds/Guilds/Guilds.yml");
-//		YamlConfiguration guildData = YamlConfiguration.loadConfiguration(guildFile);
+		File guildFile = new File("plugins/UltraGuilds/Guilds/Guilds.yml");
+		YamlConfiguration guildData = YamlConfiguration.loadConfiguration(guildFile);
 
 		File memberFile = new File("plugins/UltraGuilds/Guilds/Members.yml");
 		YamlConfiguration memberData = YamlConfiguration.loadConfiguration(memberFile);
@@ -66,7 +66,13 @@ public class GuildMenus implements Listener {
 
 			String guildMembersCount = memberData.getString("Members.Guilds." + guild + ".Counter");
 
+/*
 
+			TODO
+			 Fixes:
+			 -	Guild Leader gives an error. Error: Cannot invoke "String.length()" because "name" is null
+
+ */
 
 			String guildLeaderName = Bukkit.getOfflinePlayer(UUID.fromString(guildLeader)).getName();
 			String guildCreatorName = Bukkit.getOfflinePlayer(UUID.fromString(guildCreator)).getName();

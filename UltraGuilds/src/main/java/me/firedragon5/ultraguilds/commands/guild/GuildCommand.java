@@ -345,23 +345,7 @@ public class GuildCommand implements CommandExecutor, TabCompleter {
 				}
 			}
 
-			if (args[1].equalsIgnoreCase("setspawn")){
-				if (memberData.getString("Members.Guilds." + PlayerManager.getPlayerGuildName(player) + ".GuildLeader")
-						.equals(player.getUniqueId().toString())){
 
-//					/guild setspawn
-
-
-
-					GuildManager.setGuildSpawnLocation(PlayerManager.getPlayerGuildName(player), player);
-
-					player.sendMessage(Utils.chat(plugin.getConfig().getString("Messages.GuildSpawn.GuildSpawnSet")
-							.replace("%prefix%", plugin.getConfig().getString("Prefix"))
-							.replace("%player%", player.getName())
-							.replace("%guild%", PlayerManager.getPlayerGuildName(player))));
-
-				}
-			}
 
 			if (args[0].equalsIgnoreCase("spawn")){
 //				Teleport the player to it guild spawn
@@ -494,6 +478,24 @@ public class GuildCommand implements CommandExecutor, TabCompleter {
 						e.printStackTrace();
 					}
 
+				}
+
+				if (args[1].equalsIgnoreCase("setspawn")){
+					if (memberData.getString("Members.Guilds." + PlayerManager.getPlayerGuildName(player) + ".GuildLeader")
+							.equals(player.getUniqueId().toString())){
+
+//					/guild setspawn
+
+
+
+						GuildManager.setGuildSpawnLocation(PlayerManager.getPlayerGuildName(player), player);
+
+						player.sendMessage(Utils.chat(plugin.getConfig().getString("Messages.GuildSpawn.GuildSpawnSet")
+								.replace("%prefix%", plugin.getConfig().getString("Prefix"))
+								.replace("%player%", player.getName())
+								.replace("%guild%", PlayerManager.getPlayerGuildName(player))));
+
+					}
 				}
 
 			}
@@ -647,7 +649,7 @@ public class GuildCommand implements CommandExecutor, TabCompleter {
 				}
 			}
 
-			if (args[0].equalsIgnoreCase("guildlist")){
+			if (args[0].equalsIgnoreCase("list")){
 				GuildMenus guildMenus = new GuildMenus(plugin);
 				guildMenus.GuildMenu(player);
 			}
@@ -687,12 +689,12 @@ public class GuildCommand implements CommandExecutor, TabCompleter {
 
 				if (PlayerManager.getPlayerGuildName(player).equals("None")){
 					arguments.add("join");
-					arguments.add("guildlist");
+					arguments.add("list");
 				}else {
 					arguments.add("leave");
 					arguments.add("members");
 					arguments.add("spawn");
-					arguments.add("guildlist");
+					arguments.add("list");
 					arguments.add("rankup");
 				}
 

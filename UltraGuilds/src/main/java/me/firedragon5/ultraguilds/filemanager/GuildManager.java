@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuildManager {
 
@@ -70,6 +72,18 @@ public class GuildManager {
 	Getter
 	 */
 
+//	Get all the guilds in the guilds.yml
+	public static List<String> getGuilds() {
+		File guildFile = new File("plugins/UltraGuilds/Guilds/Guilds.yml");
+		YamlConfiguration guildData = YamlConfiguration.loadConfiguration(guildFile);
+
+		List<String> guilds = new ArrayList<>();
+		for (String guild : guildData.getConfigurationSection("Guilds").getKeys(false)) {
+			guilds.add(guild);
+		}
+		return guilds;
+	}
+
 //	Check if guild exists
 	public static boolean guildExists(String guildName){
 		return getGuildConfig().contains("Guilds." + guildName);
@@ -109,7 +123,7 @@ public class GuildManager {
 
 //Spawn Location
 	public static String getGuildSpawnLocation(String guild) {
-		return getGuildConfig().getString("Guilds." + guild + ".SpawnLocation");
+		return getGuildConfig().getString("Guilds." + guild + ".Spawn");
 	}
 
 //	Teleport the player to the spawn location
@@ -118,9 +132,9 @@ public class GuildManager {
 		File guildFile = new File("plugins/UltraGuilds/Guilds/Guilds.yml");
 		YamlConfiguration guildData = YamlConfiguration.loadConfiguration(guildFile);
 
-		String spawnLocation = guildData.getString("Guilds." + guild + ".SpawnLocation");
+		Location loc = (Location) guildData.get("Guilds." + guild + ".Spawn");
+		player.teleport(loc);
 
-		player.teleport(Location.deserialize(guildData.getConfigurationSection("Guilds." + guild + ".SpawnLocation").getValues(true)));
 
 	}
 
@@ -144,9 +158,24 @@ public class GuildManager {
 	Setter
 	 */
 
-/*
-Setter
- */
+
+	public static void adminGuildRename(String guild, String newGuildName){
+		File guildFile = new File("plugins/UltraGuilds/Guilds/Guilds.yml");
+		YamlConfiguration guildData = YamlConfiguration.loadConfiguration(guildFile);
+
+//		Rename the guildName and the guild
+		guildData.set("Guilds." + guild + ".Name", newGuildName);
+		guildData.set("Guilds." + guild, newGuildName);
+
+//		Send the player a message
+
+//
+		try {
+			guildData.save(guildFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 //	Full setter guilds
 	public static void setFullGuildData(String guildName, String guildTag, String guildLeader, String guildCreator, int guildScore, boolean guildVisibility, String guildSpawnLocation){
